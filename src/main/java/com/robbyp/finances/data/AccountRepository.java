@@ -18,19 +18,17 @@ package com.robbyp.finances.data;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
 import com.robbyp.finances.domain.Account;
 
 
-//@RepositoryRestResource(collectionResourceRel = "accounts", path = "accounts")
 public interface AccountRepository extends MongoRepository<Account, String> {
 
-  public Account findByName(@Param("name") String name);
+  Account findByName(@Param("name") String name);
 
-  public List<Account> findByInstitution(@Param("institution") String institution);
+  List<Account> findByInstitution(@Param("institution") String institution);
 
 }
 
