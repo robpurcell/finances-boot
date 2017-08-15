@@ -22,31 +22,33 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
-import com.robbyp.finances.data.AccountRepository;
-import com.robbyp.finances.domain.Account;
-import com.robbyp.finances.domain.AccountType;
+import com.robbyp.finances.data.TransactionRepository;
+import com.robbyp.finances.domain.Person;
+import com.robbyp.finances.domain.Transaction;
 
 @Component
-public class AccountDataRunner implements CommandLineRunner {
+public class TransactionDataRunner implements CommandLineRunner {
 
   private final ApplicationContext ctx;
 
-  private final AccountRepository repository;
+  private final TransactionRepository repository;
 
   @Autowired
-  public AccountDataRunner(ApplicationContext context, AccountRepository repository) {
+  public TransactionDataRunner(ApplicationContext context, TransactionRepository repository) {
     this.ctx = context;
     this.repository = repository;
   }
 
   public void run(String... args) throws Exception {
     repository.deleteAll();
-    repository.insert(new Account("Current Account",
-                                  "11223344",
-                                  "Barclays",
-                                  new BigDecimal(1000),
-                                  AccountType.CURRENT));
+    repository.insert(new Transaction(LocalDate.now(),
+                                      "Descr",
+                                      "Amazon",
+                                      new Person("Rob"),
+                                      BigDecimal.valueOf(100))
+    );
   }
 
 }

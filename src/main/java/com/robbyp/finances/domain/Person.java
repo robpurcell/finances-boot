@@ -20,27 +20,8 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-
-import java.math.BigDecimal;
 
 @Data
-public class Account {
-
-  @Id
-  @Setter(AccessLevel.NONE) private String id;
-
+public class Person {
   @NonNull @Setter(AccessLevel.NONE) private String name;
-  @NonNull @Setter(AccessLevel.NONE) private String number;
-  @NonNull @Setter(AccessLevel.NONE) private String institution;
-  @NonNull @Setter(AccessLevel.NONE) private BigDecimal openingBalance;
-  @NonNull @Setter(AccessLevel.NONE) private AccountType accountType;
-
-  @Override
-  public String toString() {
-    return String.format(
-      "Account[id=%s, name='%s', number='%s', institution='%s]",
-      id, name, number, institution);
-  }
-
 }
