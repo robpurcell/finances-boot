@@ -14,21 +14,24 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package com.robbyp.finances.data;
+package com.robbyp.finances.service;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.query.Param;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import com.robbyp.finances.domain.Account;
+import com.robbyp.finances.repository.AccountRepository;
 
+@Service
+public class AccountService {
 
-public interface AccountRepository extends MongoRepository<Account, String> {
+  @Autowired
+  private AccountRepository repository;
 
-  Account findByName(@Param("name") String name);
-
-  List<Account> findByInstitution(@Param("institution") String institution);
+  public List<Account> findAll() {
+    return repository.findAll();
+  }
 
 }
-

@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
-import com.robbyp.finances.data.AccountRepository;
+import com.robbyp.finances.repository.AccountRepository;
 import com.robbyp.finances.domain.Account;
 import com.robbyp.finances.domain.AccountType;
 

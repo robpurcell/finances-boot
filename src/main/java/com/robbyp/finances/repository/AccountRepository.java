@@ -14,14 +14,21 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package com.robbyp.finances.domain;
+package com.robbyp.finances.repository;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.Setter;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.query.Param;
 
-@Data
-public class Person {
-  @NonNull @Setter(AccessLevel.NONE) private String name;
+import java.util.List;
+
+import com.robbyp.finances.domain.Account;
+
+
+public interface AccountRepository extends MongoRepository<Account, String> {
+
+  Account findByName(@Param("name") String name);
+
+  List<Account> findByInstitution(@Param("institution") String institution);
+
 }
+

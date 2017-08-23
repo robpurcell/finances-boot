@@ -24,9 +24,9 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.robbyp.finances.data.TransactionRepository;
-import com.robbyp.finances.domain.Person;
 import com.robbyp.finances.domain.Transaction;
+import com.robbyp.finances.domain.User;
+import com.robbyp.finances.repository.TransactionRepository;
 
 @Component
 public class TransactionDataRunner implements CommandLineRunner {
@@ -42,11 +42,14 @@ public class TransactionDataRunner implements CommandLineRunner {
   }
 
   public void run(String... args) throws Exception {
+    User user = new User();
+    user.setFirstName("Rob");
+
     repository.deleteAll();
     repository.insert(new Transaction(LocalDate.now(),
                                       "Descr",
                                       "Amazon",
-                                      new Person("Rob"),
+                                      user,
                                       BigDecimal.valueOf(100))
     );
   }
