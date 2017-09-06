@@ -8,3 +8,17 @@
 *.iml
 *.ipr
 out/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Node
+/node/
+node_tmp/
+node_modules/
+npm-debug.log.*
+
+# Mac OSX
+.DS_Store
+
