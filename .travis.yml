@@ -4,6 +4,18 @@ jdk:
   - oraclejdk8
 services: mongodb
 node_js: "0.10"
-install: "yarn install"
-script: "yarn test"
-cache: yarn
+install:
+  "yarn install"
+  "./gradlew assemble"
+script:
+  "yarn test"
+  "./gradlew check"
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  yarn
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
