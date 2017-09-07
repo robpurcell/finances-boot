@@ -3,3 +3,7 @@ language: java
 jdk:
   - oraclejdk8
 services: mongodb
+node_js: "0.10"
+install: "yarn install"
+script: "yarn test"
+cache: yarn
