@@ -5,17 +5,16 @@ jdk:
 services: mongodb
 node_js: "0.10"
 install:
-  "yarn install"
-  "./gradlew assemble"
+  - "yarn install"
+  - "./gradlew assemble"
 script:
-  "yarn test"
-  "./gradlew check"
+  - "yarn test"
+  - "./gradlew check"
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
-  yarn
+  yarn: true
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-
